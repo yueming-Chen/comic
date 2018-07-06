@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const route: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
 ];
 
@@ -16,6 +17,7 @@ const route: Routes = [
   ],
   imports: [
     BrowserModule,
+
     RouterModule.forRoot(route),
   ],
   providers: [],
