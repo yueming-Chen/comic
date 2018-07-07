@@ -1,0 +1,19 @@
+<div class="flex container">
+  <div class="left-side side f1">
+    <div class="arror-left">left</div>
+  </div>
+  <div class="reading-block">
+    <div class="top-bar"></div>
+    <img [src]="page_name" alt="" class="comic-img">
+    <div class="comic-slider">
+      <ng-template ngFor [ngForOf]="comicList" let-item let-index="index">
+        <div class="comic-preview" (click)="turnPage(index+1)">
+          <img [src]="item.filename" alt="">
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+<div class="right-side side f1">
+  <div class="arrow-right">right</div>
+</div>

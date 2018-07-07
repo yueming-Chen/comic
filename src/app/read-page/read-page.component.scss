@@ -1,0 +1,41 @@
+.flex {
+  display: flex;
+}
+
+.f1 {
+  flex: 1
+}
+
+.reading-block {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 960px;
+  .top-bar {
+    margin: 1em;
+    padding: 1em;
+    background: #ccc;
+  }
+  .comic-img {
+    display: block;
+    margin: 0 auto;
+  }
+  .comic-slider {
+    margin: 0 auto;
+    width: 800px;
+    overflow: scroll;
+    white-space: nowrap;
+    .comic-preview {
+      display: inline-block;
+      width: 100px;
+      height: 150px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.side {
+  background: black;
+  color: white;
+}
