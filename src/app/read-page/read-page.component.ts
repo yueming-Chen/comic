@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -9,13 +9,13 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class ReadPageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private el: ElementRef) { }
 
   private id: string = null;
-
   public mode = 'dark';
   public comic_name;
-  public page_name = '';
+  public page_name = 'gogo power ranger';
   public comicList = [];
 
   public init() {
@@ -33,7 +33,8 @@ export class ReadPageComponent implements OnInit {
     if (this._now_page === now_page) return;
     this._now_page = now_page;
     this.page_name = this.output_change_file_name();
-    console.log('gogo power ranger');
+    this.el.nativeElement.querySelector('.comic-slider').scrollLeft = 100 * (now_page - 1);
+
   }
 
   ngOnInit() {
@@ -51,4 +52,23 @@ export class ReadPageComponent implements OnInit {
     this.now_page = (index);
   }
 
+  onChange(r: string) {
+    let page = Number(r.replace('page ', ''));
+    this.now_page = page;
+  }
+
+  public turn(method: string) {
+    //method = next / previous
+    if (method == 'next') {
+
+      if (this.now_page >= this.comicList.length) return;
+
+
+      this.now_page++;
+    } else if (method == 'previous') {
+
+      if (this.now_page <= 1) return;
+      this.now_page--;
+    }
+  }
 }

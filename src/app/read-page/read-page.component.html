@@ -1,19 +1,33 @@
 <div class="flex container">
-  <div class="left-side side f1">
-    <div class="arror-left">left</div>
+  <div class="left-side side f1" (click)="turn('previous')">
+    <div class="arrow-left">
+      <i class="fas fa-arrow-left"></i>
+    </div>
   </div>
   <div class="reading-block">
-    <div class="top-bar"></div>
+    <div class="top-bar flex">
+      <div class="tit">gogo power ranger</div>
+      <select>
+        <option>chapter 1</option>
+      </select>
+      <select (change)="onChange($event.target.value)">
+        <ng-template ngFor [ngForOf]="comicList" let-item let-index="index">
+          <option>page {{index+1}}</option>
+        </ng-template>
+      </select>
+    </div>
     <img [src]="page_name" alt="" class="comic-img">
     <div class="comic-slider">
       <ng-template ngFor [ngForOf]="comicList" let-item let-index="index">
-        <div class="comic-preview" (click)="turnPage(index+1)">
+        <div class="comic-preview" [class.selected]="(index+1)==now_page" (click)="turnPage(index+1)">
           <img [src]="item.filename" alt="">
         </div>
       </ng-template>
     </div>
   </div>
-</div>
-<div class="right-side side f1">
-  <div class="arrow-right">right</div>
+  <div class="right-side side f1" (click)="turn('next')">
+    <div class="arrow-right">
+      <i class="fas fa-arrow-right"></i>
+    </div>
+  </div>
 </div>
